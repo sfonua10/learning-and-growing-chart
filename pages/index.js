@@ -1,65 +1,67 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
 
 export default function Home() {
+  const dummyData = [
+    {
+      situation: "Wife and I disagree if Skribbl.io is appropriate or not",
+      NMR: [
+        "Get angry and blame others",
+        "Doubt your abilities",
+        "Lose hope you'll find a good job and quit trying",
+      ],
+      WAR: [
+        "Ask for feedback from others, Find new skills you can learn or thing that would give you more experience.",
+        "Apply for other jobs",
+      ],
+    },
+    {
+      situation: "I'm feeling overwhelmed talking about duties/responsibilities, etc. I feel like I'm being constantly nagged by wife",
+      NMR: [
+        "Get angry and know that I'm right",
+        "Doubt your abilities",
+        "Lose hope you'll find a good job and quit trying",
+      ],
+      WAR: [
+        "Ask for feedback from others.",
+        "Find new skills you can learn or thing that would give you more experience.",
+        "Apply for other jobs",
+      ],
+    },
+  ];
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+      <main>
+        <table className="ml-4 mr-4">
+          <thead>
+            <tr>
+              <th className="w-1/4 px-4 py-2 text-blue-600">Situation</th>
+              <th className="w-1/4 px-4 py-2 text-blue-600">
+                "Natural Man" Response (Mosiah 3:19)
+              </th>
+              <th className="w-1/4 px-4 py-2 text-blue-600">
+                Ways to Act Responsibly (2 Nephi 2:26)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {dummyData.map((sit, index) => {
+              console.log('index', index);
+              return (
+                <tr className={`${index % 2 === 1 ? 'bg-blue-200' : 'bg-blue-100'}`}>
+                  <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">{sit.situation}</td>
+                  <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">{sit.NMR.map(x => (<p>{x}</p>))}</td>
+                  <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">{sit.WAR.map(x => (<p>{x}</p>))}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
